@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Simon Chanda — Software Engineer &amp; IT Professional</title>
+    <meta
+      name="description"
+      content="Portfolio of Simon Chanda, Software Engineer & IT Professional based in Lusaka, Zambia."
+    />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/TagCloud@2.5.0/dist/TagCloud.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+      defer
+    ></script>
+
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+
+  <body>
+    <div class="bg-orbs" aria-hidden="true">
+      <span class="orb orb-1"></span>
+      <span class="orb orb-2"></span>
+      <span class="orb orb-3"></span>
+    </div>
+
+    <aside class="sidebar" aria-label="Primary navigation">
+      <a class="brand" href="#home" data-target="home" aria-label="Home">
+        <img src="assets/logo.svg" alt="Simon Chanda logo" />
+        <span class="brand-name">SC</span>
+      </a>
+
+      <nav class="nav-links">
+        <button class="nav-link active" data-target="home" aria-current="page" aria-label="Home" title="Home">
+          <i class="fa-solid fa-house"></i><span class="nav-label">Home</span>
+        </button>
+        <button class="nav-link" data-target="about" aria-label="About" title="About">
+          <i class="fa-solid fa-user"></i><span class="nav-label">About</span>
+        </button>
+        <button class="nav-link" data-target="experience" aria-label="Experience" title="Experience">
+          <i class="fa-solid fa-briefcase"></i><span class="nav-label">Experience</span>
+        </button>
+        <button class="nav-link" data-target="projects" aria-label="Projects" title="Projects">
+          <i class="fa-solid fa-laptop-code"></i><span class="nav-label">Projects</span>
+        </button>
+        <button class="nav-link" data-target="skills" aria-label="Skills" title="Skills">
+          <i class="fa-solid fa-wrench"></i><span class="nav-label">Skills</span>
+        </button>
+        <button class="nav-link" data-target="contact" aria-label="Contact" title="Contact">
+          <i class="fa-solid fa-envelope"></i><span class="nav-label">Contact</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-social">
+        <a href="https://github.com/bruh7463" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="#contact" data-target="contact" class="social-mail" aria-label="Email" title="Email">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+      </div>
+    </aside>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <main class="content">
+      <section id="home" class="page active" aria-labelledby="home-title">
+        <div class="page-inner home-inner">
+          <p class="eyebrow">Hi there, my name is</p>
+          <h1 id="home-title" class="title" data-text="Simon Chanda">Simon Chanda</h1>
+          <h2 class="subtitle" data-text="Software Engineer &amp; IT Professional">Software Engineer &amp; IT Professional</h2>
+          <p class="location"><i class="fa-solid fa-location-dot"></i> Lusaka, Zambia</p>
+          <p class="intro">
+            I build robust web applications and keep IT systems running reliably. Full-stack developer,
+            network troubleshooter, and problem-solver passionate about tools that work in low-resource settings.
+          </p>
+          <div class="home-actions">
+            <a href="#projects" class="btn btn-primary" data-target="projects">View My Work <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#contact" class="btn btn-ghost" data-target="contact">Get In Touch</a>
+          </div>
+          <div class="home-social">
+            <a href="https://github.com/bruh7463" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/simon-chanda-a29b46323 " target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="mailto:chanda.kay60@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+      </section>
+<section id="about" class="page" aria-labelledby="about-title">
+        <div class="page-inner">
+          <h2 id="about-title" class="section-title" data-text="About Me">About Me</h2>
+
+          <div class="about-grid">
+            <div class="glass-card about-text">
+              <p>
+                I'm a Software Engineering graduate from the University of Zambia with hands-on
+                experience in full-stack development, database systems, and IT infrastructure.
+                I'm skilled at designing robust web applications and maintaining network and system
+                environments.
+              </p>
+              <p>
+                I'm passionate about building tools that solve real-world problems in low-resource
+                settings, with a strong foundation in both software development and IT support.
+              </p>
+            </div>
+
+            <div class="glass-card">
+              <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+              <div class="edu-item">
+                <h4>Bachelor of Computer Science (Software Engineering)</h4>
+                <p class="muted">
+                  University of Zambia — Lusaka, Zambia
+                  <span class="tag">Graduated May 2026</span>
+                </p>
+                <ul class="course-list">
+                  <li>Object-Oriented Programming (Java)</li>
+                  <li>Relational Databases (MySQL / SQLite)</li>
+                  <li>Artificial Intelligence (co-built a checkers agent in Python)</li>
+                  <li>Software Engineering (requirements specs, use cases, design documentation)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="glass-card">
+              <h3><i class="fa-solid fa-certificate"></i> Certifications</h3>
+              <ul class="cert-list">
+                <li>
+                  <span class="cert-name">CCNAv7: Introduction to Networks</span>
+                  <span class="muted">Cisco Networking Academy · Apr 2024</span>
+                </li>
+                <li>
+                  <span class="cert-name">IT Essentials</span>
+                  <span class="muted">Cisco Networking Academy · Oct 2023</span>
+                </li>
+                <li>
+                  <span class="cert-name">NDG Linux Essentials</span>
+                  <span class="muted">Cisco Networking Academy · Sep 2023</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="glass-card">
+              <h3><i class="fa-solid fa-user-check"></i> Professional Skills</h3>
+              <div class="chips">
+                <span class="chip">Problem Solving</span>
+                <span class="chip">Communication</span>
+                <span class="chip">Teamwork</span>
+                <span class="chip">Organisation</span>
+                <span class="chip">Attention to Detail</span>
+                <span class="chip">Adaptability</span>
+              </div>
+              <h3 class="languages-heading"><i class="fa-solid fa-language"></i> Languages</h3>
+              <p class="muted">English — Fluent</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="page" aria-labelledby="experience-title">
+        <div class="page-inner">
+          <h2 id="experience-title" class="section-title" data-text="Experience">Experience</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="glass-card timeline-card">
+                <h3>IT Intern</h3>
+                <p class="muted company-line">
+                  <i class="fa-solid fa-building"></i> Northern Technical College (NORTEC) — Zambia
+                  <span class="tag">May 2026 – Present</span>
+                </p>
+                <ul class="duty-list">
+                  <li>Contributing to development of the college website using WordPress (layout, content structure, functionality)</li>
+                  <li>Assisting with configuration &amp; maintenance of network infrastructure (switches, routers, cabling) across campus</li>
+                  <li>Setting up workstations, installing OS/software/peripherals for staff and labs</li>
+                  <li>Troubleshooting hardware, software, and connectivity issues for staff and students</li>
+                  <li>Supporting maintenance &amp; monitoring of IT infrastructure for reliable operations</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+<section id="projects" class="page" aria-labelledby="projects-title">
+        <div class="page-inner">
+          <h2 id="projects-title" class="section-title" data-text="Projects">Projects</h2>
+
+          <div class="projects-grid">
+            <div class="flip-card" tabindex="0">
+              <div class="flip-inner">
+                <div class="flip-front glass-card">
+                  <div class="project-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                  <h3>SMS-Based Telemedicine Platform</h3>
+                  <p class="role">Lead Developer</p>
+                  <div class="tech-chips">
+                    <span class="chip">React</span>
+                    <span class="chip">Node.js</span>
+                    <span class="chip">MongoDB</span>
+                  </div>
+                  <span class="flip-hint">Hover / tap to flip</span>
+                </div>
+                <div class="flip-back glass-card">
+                  <h3>SMS-Based Telemedicine Platform</h3>
+                  <p>
+                    Full-stack telemedicine system enabling patient–provider consultations via SMS
+                    or web, targeting low-resource communities.
+                  </p>
+                  <ul class="duty-list">
+                    <li>React · Node.js/Express · MongoDB</li>
+                    <li>Integrated SMS gateway achieving response times under 2 seconds</li>
+                    <li>Registration, appointment scheduling, prescription management, chatbot consultations</li>
+                    <li>Configured &amp; deployed the app server environment</li>
+                  </ul>
+                  <a href="https://github.com/bruh7463/telemed_web_sms_consultation" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                    <i class="fa-brands fa-github"></i> View Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="page" aria-labelledby="skills-title">
+        <div class="page-inner skills-layout">
+          <div>
+            <h2 id="skills-title" class="section-title" data-text="Skills">Skills</h2>
+            <div class="glass-card skills-text">
+              <p>
+                I have a strong foundation across the full stack — from Java, Python, JavaScript,
+                and C, to modern frameworks like React and Django — backed by solid database and API
+                experience with MySQL, SQLite, MongoDB, and REST APIs.
+              </p>
+              <p>
+                On the infrastructure side, my CCNAv7 and Linux training means I'm equally at home
+                configuring switches and routers, troubleshooting networks, and supporting hardware —
+                bridging the gap between software development and dependable IT operations.
+              </p>
+            </div>
+          </div>
+          <div class="tagcloud-wrap" aria-label="Skills word cloud">
+            <div id="tagcloud" class="tagcloud"></div>
+          </div>
+        </div>
+      </section>
+<section id="contact" class="page" aria-labelledby="contact-title">
+        <div class="page-inner">
+          <h2 id="contact-title" class="section-title" data-text="Contact">Contact</h2>
+
+          <div class="contact-grid">
+            <div class="glass-card contact-info">
+              <h3>Let's work together</h3>
+              <p class="muted">
+                I'm open to new opportunities, collaborations, and questions. Send a message and
+                I'll get back to you.
+              </p>
+              <ul class="contact-details">
+                <li>
+                  <i class="fa-solid fa-envelope"></i>
+                  <a href="mailto:chanda.kay60@gmail.com">chanda.kay60@gmail.com</a>
+                </li>
+                <li>
+                  <i class="fa-solid fa-phone"></i>
+                  <a href="tel:+260973441658">+260 973 441658</a>
+                </li>
+                <li><i class="fa-solid fa-location-dot"></i> Lusaka, Zambia</li>
+                <li>
+                  <i class="fa-brands fa-github"></i>
+                  <a href="https://github.com/bruh7463" target="_blank" rel="noopener noreferrer">github.com/bruh7463</a>
+                </li>
+                <li>
+                  <i class="fa-brands fa-linkedin-in"></i>
+                  <a href="https://www.linkedin.com/in/your-linkedin-username" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </li>
+              </ul>
+            </div>
+
+            <form id="contact-form" class="glass-card contact-form" novalidate>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" name="name" placeholder="Your name" required />
+                </div>
+                <div class="form-field">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" placeholder="you@example.com" required />
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="What's this about?" required />
+              </div>
+              <div class="form-field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" id="send-btn">
+                <span class="btn-text">
+                  Send Message <i class="fa-solid fa-paper-plane"></i>
+                </span>
+                <span class="btn-loading" hidden><i class="fa-solid fa-spinner fa-spin"></i> Sending…</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>© <span id="year"></span> Simon Chanda. Built with plain HTML, CSS &amp; vanilla JS.</p>
+      </footer>
+    </main>
+
+    <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="scripts/main.js" defer></script>
+    <script src="scripts/wordcloud.js" defer></script>
+    <script src="scripts/contact.js" defer></script>
+  </body>
+</html>
+
