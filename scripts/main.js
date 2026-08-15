@@ -15,12 +15,27 @@
     // Decode HTML entities (e.g. &amp;) that were placed in data-text
     const decoded = decodeEntities(text);
     el.textContent = '';
-    Array.from(decoded).forEach(function (char, i) {
-      const span = document.createElement('span');
-      span.className = 'letter';
-      span.textContent = char === ' ' ? '\u00A0' : char;
-      span.style.animationDelay = (i * 0.03).toFixed(2) + 's';
-      el.appendChild(span);
+
+    // Each letter renders as its own inline-block span; therefore wrap each
+    // word in a non-wrapping <span class="word"> so the browser can only wrap
+    // at the spaces between words (never mid-word). Delay stays continuous.
+    let i = 0;
+    decoded.split(/(\s+)/).forEach(function (seg) {
+      if (/^\s+$/.test(seg)) {
+        el.appendChild(document.createTextNode(' '));
+        return;
+      }
+      const word = document.createElement('span');
+      word.className = 'word';
+      Array.from(seg).forEach(function (char) {
+        const span = document.createElement('span');
+        span.className = 'letter';
+        span.textContent = char;
+        span.style.animationDelay = (i * 0.03).toFixed(2) + 's';
+        word.appendChild(span);
+        i++;
+      });
+      el.appendChild(word);
     });
   }
 

@@ -427,7 +427,7 @@ button {
 }
 
 .title {
-  font-size: clamp(2.6rem, 8vw, 4.6rem);
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
   margin: 10px 0 8px;
   letter-spacing: -0.5px;
 }
@@ -466,6 +466,13 @@ button {
   animation: letter-pop 0.5s ease forwards;
 }
 
+/* Groups letters into non-wrapping words so the heading only wraps at
+   the spaces between words — never mid-word. */
+.word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 @keyframes letter-pop {
   to {
     opacity: 1;
@@ -479,7 +486,7 @@ button {
 .home-inner {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
   align-items: center;
   gap: clamp(20px, 4vw, 60px);
 }
@@ -499,7 +506,7 @@ button {
 }
 
 .home-logo img {
-  width: 400px;
+  width: 520px;
   max-width: 100%;
   filter: drop-shadow(0 0 44px var(--accent-glow));
   animation: zoom-in-down 2.5s ease-in-out 1s both;
