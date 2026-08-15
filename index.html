@@ -35,6 +35,11 @@
   </head>
 
   <body>
+    <!-- Loading overlay — hides the site until everything has loaded -->
+    <div id="loader" aria-hidden="true">
+      <span class="loader" role="status" aria-label="Loading"></span>
+    </div>
+
     <div class="bg-orbs" aria-hidden="true">
       <div id="stars"></div>
       <div id="stars2"></div>
@@ -333,9 +338,9 @@
         </div>
       </section>
 
-      <footer class="footer">
+      <!--<footer class="footer">
         <p>© <span id="year"></span> Simon Chanda. Built with plain HTML, CSS &amp; vanilla JS.</p>
-      </footer>
+      </footer>-->
     </main>
 
     <div class="toast-region" aria-live="polite" aria-atomic="true"></div>

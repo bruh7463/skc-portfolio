@@ -131,6 +131,16 @@
     });
   });
 
+  /* ---------- Loading overlay: hide once the page is fully loaded ---------- */
+  function hideLoader() {
+    const overlay = document.getElementById('loader');
+    if (!overlay || overlay.classList.contains('is-hidden')) return;
+    overlay.classList.add('is-hidden');
+  }
+  window.addEventListener('load', hideLoader);
+  // Failsafe: never keep the site hidden longer than 5s even if a CDN stalls
+  setTimeout(hideLoader, 5000);
+
   /* ---------- Starfield generation (random per visit) ---------- */
   function createStars(count) {
     const points = [];

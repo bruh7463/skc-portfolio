@@ -82,6 +82,65 @@ button {
 }
 
 /* ============================================================
+   Loading overlay (shown until the page is fully loaded)
+   ============================================================ */
+#loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000; /* above the sidebar and all content */
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#loader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader {
+  display: inline-flex;
+  gap: 10px;
+}
+
+.loader:before,
+.loader:after {
+  content: '';
+  height: 20px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(farthest-side, var(--accent) 95%, transparent 0) 35% 35%/6px 6px no-repeat
+    #fff;
+  animation: l5 3s infinite;
+}
+
+@keyframes l5 {
+  0%,
+  11% {
+    background-position: 35% 35%;
+  }
+  14%,
+  36% {
+    background-position: 65% 35%;
+  }
+  38%,
+  61% {
+    background-position: 65% 65%;
+  }
+  64%,
+  86% {
+    background-position: 35% 65%;
+  }
+  88%,
+  100% {
+    background-position: 35% 35%;
+  }
+}
+
+/* ============================================================
    Starfield background (parallax layers)
    ============================================================ */
 .bg-orbs {
@@ -886,11 +945,33 @@ button {
   justify-content: center;
   text-align: center;
   gap: 14px;
+  /* Overflow safety net: if a face's content ends up taller than the
+     fixed card height, keep it scrollable inside the card instead of
+     spilling out over surrounding page content. */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.flip-front::-webkit-scrollbar,
+.flip-back::-webkit-scrollbar {
+  width: 6px;
+}
+
+.flip-front::-webkit-scrollbar-thumb,
+.flip-back::-webkit-scrollbar-thumb {
+  background: var(--border-accent);
+  border-radius: 3px;
 }
 
 .flip-back {
   transform: rotateY(180deg);
   align-items: flex-start;
+  /* Override the shared justify-content:center: centering overflowing
+     flex content causes browsers to clip/scroll it symmetrically from
+     the middle, cutting off the top of the heading before you can even
+     scroll to it. Top-align instead so all content starts in view and
+     any overflow only spills downward, where the scrollbar can reach it. */
+  justify-content: flex-start;
   text-align: left;
 }
 
@@ -1284,4 +1365,3 @@ textarea:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
-
