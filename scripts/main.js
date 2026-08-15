@@ -116,14 +116,40 @@
     });
   });
 
+  /* ---------- Starfield generation (random per visit) ---------- */
+  function createStars(count) {
+    const points = [];
+    for (let i = 0; i < count; i++) {
+      points.push(
+        Math.floor(Math.random() * 2000) +
+          'px ' +
+          Math.floor(Math.random() * 2000) +
+          'px #FFF'
+      );
+    }
+    return points.join(',');
+  }
+
+  function initStars() {
+    const root = document.documentElement;
+    root.style.setProperty('--stars-small', createStars(1400));
+    root.style.setProperty('--stars-medium', createStars(400));
+    root.style.setProperty('--stars-large', createStars(200));
+  }
+
   /* ---------- Footer year ---------- */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   /* ---------- Init ---------- */
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', handleHash);
-  } else {
+  function init() {
+    initStars();
     handleHash();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 })();

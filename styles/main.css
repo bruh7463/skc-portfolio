@@ -1,5 +1,5 @@
 /* ============================================================
-   Simon Chanda Portfolio — styles/main.css
+   styles/main.css
    Dark glassmorphism theme, single electric-orange accent
    ============================================================ */
 
@@ -26,6 +26,11 @@
   --radius-sm: 12px;
   --sidebar-w: 92px;
   --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Starfield: random per-visit positions injected by scripts/main.js */
+  --stars-small: none;
+  --stars-medium: none;
+  --stars-large: none;
 }
 
 * {
@@ -77,7 +82,7 @@ button {
 }
 
 /* ============================================================
-   Background glow orbs
+   Starfield background (parallax layers)
    ============================================================ */
 .bg-orbs {
   position: fixed;
@@ -86,47 +91,159 @@ button {
   overflow: hidden;
 }
 
-.orb {
+/* Layer bases and their ::after share identical star positions.
+   Positions are random per-visit and injected as CSS custom
+   properties (--stars-small / --stars-medium / --stars-large). */
+#stars,
+#stars::after,
+#stars2,
+#stars2::after,
+#stars3,
+#stars3::after {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.5;
-  animation: float-orb 18s ease-in-out infinite;
+  top: 0;
+  left: 0;
 }
 
-.orb-1 {
-  width: 420px;
-  height: 420px;
-  background: radial-gradient(circle, var(--accent-glow), transparent 70%);
-  top: -120px;
-  right: -80px;
+#stars,
+#stars::after {
+  width: 1px;
+  height: 1px;
+  box-shadow: var(--stars-small);
 }
 
-.orb-2 {
-  width: 360px;
-  height: 360px;
-  background: radial-gradient(circle, rgba(56, 130, 246, 0.35), transparent 70%);
-  bottom: -100px;
-  left: 5%;
-  animation-delay: -6s;
+#stars2,
+#stars2::after {
+  width: 2px;
+  height: 2px;
+  box-shadow: var(--stars-medium);
 }
 
-.orb-3 {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(122, 61, 255, 0.28), transparent 70%);
-  top: 40%;
-  left: 45%;
-  animation-delay: -12s;
+#stars3,
+#stars3::after {
+  width: 3px;
+  height: 3px;
+  box-shadow: var(--stars-large);
 }
 
-@keyframes float-orb {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
+/* ::after duplicates the pattern 2000px below for seamless looping */
+#stars::after,
+#stars2::after,
+#stars3::after {
+  content: '';
+  top: 2000px;
+}
+
+/* Fastest (closest) → slowest (farthest). GPU-accelerated: only transform. */
+#stars {
+  animation: anim-star 50s linear infinite;
+}
+#stars2 {
+  animation: anim-star 100s linear infinite;
+}
+#stars3 {
+  animation: anim-star 150s linear infinite;
+}
+
+@keyframes anim-star {
+  from {
+    transform: translateY(0);
   }
-  50% {
-    transform: translate(30px, -30px) scale(1.1);
+  to {
+    transform: translateY(-2000px);
+  }
+}
+
+/* Bonus: a periodic shooting-star burst (~6 comets, fires every 15s).
+   Each comet travels at rotate(315deg) with a ::before tail fading out. */
+.shooting-star {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0; /* hidden outside its animated pass */
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1),
+    0 0 0 8px rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(255, 255, 255, 0.1);
+  animation: star-shoot 15s linear infinite;
+}
+
+.shooting-star::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 260px;
+  height: 1px;
+  background: linear-gradient(90deg, #fff, transparent);
+}
+
+@keyframes star-shoot {
+  0% {
+    transform: rotate(315deg) translateX(0);
+    opacity: 0;
+  }
+  1.5% {
+    opacity: 1;
+  }
+  13% {
+    opacity: 1;
+  }
+  20%,
+  100% {
+    transform: rotate(315deg) translateX(-1000px);
+    opacity: 0;
+  }
+}
+
+/* Staggered origins + delays so the 6 comets fire in sequence
+   (spans are children 4–9 of .bg-orbs, after the three star divs). */
+.shooting-star:nth-child(4) {
+  top: 0;
+  right: 0;
+  animation-delay: 0s;
+}
+.shooting-star:nth-child(5) {
+  top: 0;
+  right: 80px;
+  animation-delay: 0.5s;
+}
+.shooting-star:nth-child(6) {
+  top: 90px;
+  right: 0;
+  animation-delay: 1s;
+}
+.shooting-star:nth-child(7) {
+  top: 0;
+  right: 180px;
+  animation-delay: 1.5s;
+}
+.shooting-star:nth-child(8) {
+  top: 300px;
+  right: 60px;
+  animation-delay: 2s;
+}
+.shooting-star:nth-child(9) {
+  top: 0;
+  left: 260px;
+  animation-delay: 2.5s;
+}
+
+/* Reduced motion: keep stars static at their resting positions.
+   (Overrides the global reduce rule, which would otherwise jump the
+   animation to its -2000px endpoint and hide the base stars.) */
+@media (prefers-reduced-motion: reduce) {
+  #stars,
+  #stars2,
+  #stars3,
+  #stars::after,
+  #stars2::after,
+  #stars3::after,
+  .shooting-star {
+    animation: none !important;
   }
 }
 
@@ -361,9 +478,52 @@ button {
    ============================================================ */
 .home-inner {
   min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: clamp(20px, 4vw, 60px);
+}
+
+.home-text {
+  min-width: 0;
+}
+
+/* Large animated logo on the right. The permanent 30° tilt lives on the
+   container so the entrance animation only handles scale/opacity. */
+.home-logo {
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  transform: rotateZ(30deg);
+  will-change: transform;
+}
+
+.home-logo img {
+  width: 400px;
+  max-width: 100%;
+  filter: drop-shadow(0 0 44px var(--accent-glow));
+  animation: zoom-in-down 2.5s ease-in-out 1s both;
+}
+
+@keyframes zoom-in-down {
+  0% {
+    opacity: 0;
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 70px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-logo img {
+    animation: none !important;
+  }
 }
 
 .eyebrow {
@@ -992,6 +1152,33 @@ button {
 
   .contact-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Home: stack into one column, logo moves below the text */
+  .home-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 20px;
+    padding-top: 40px;
+  }
+
+  .home-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .intro {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .home-logo {
+    order: 2;
+  }
+
+  .home-logo img {
+    width: 240px;
   }
 }
 
